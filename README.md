@@ -34,7 +34,6 @@ Em relação às migrações não utilizei nenhum framework... fiz manualmente.
 É normal o sistema lançar uma exception caso a base de dados já exista.
 Caso não queira ver a exception basta remover o comando de migration do docker-compose
 
-command: >
-      sh -c "python db/wait_for_db.py &&
-             python db/migration.py && // remover esta linha
-             python server.py"
+      python db/wait_for_db.py &&
+      python db/migration.py && // remover esta linha
+      python server.py
