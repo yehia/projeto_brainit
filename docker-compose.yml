@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+  gw_entrada:
+    build:
+      context: ./gateway_entrada
+    ports:
+      - "5050:5050"
+    volumes:
+      - ./gateway_entrada/app:/gateway_entrada/app
+    command: >
+      sh -c "python db/wait_for_db.py &&
+             python db/migration.py &&
+             python server.py"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=db
+      - DB_USER=user
+      - DB_PASS=passwd
+    depends_on:
+      - db
+
+  gw_tratamento:
+    build:
+      context: ./gateway_tratamento
+    volumes:
+      - ./gateway_tratamento/app:/gateway_tratamento/app
+    command: >
+      sh -c "python db/wait_for_db.py &&
+             python handle.py"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=db
+      - DB_USER=user
+      - DB_PASS=passwd
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14-alpine
+    volumes:
+      - sock-db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=db
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=passwd
+    ports:
+      - "5432:5432"
+
+volumes:
+  sock-db-data:
