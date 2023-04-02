@@ -1,12 +1,13 @@
 # Build GW_ENTRADA:
 	docker build .
-	docker-compose build
-	docker-compose run --rm gw_entrada sh -c "python db/migration.py && python server.py"
 
 # Build GW_TRATAMENTO:
 	docker build .
-	docker-compose build
-	docker-compose run --rm gw_entrada sh -c "python handle.py"
+
+# Compose
+    docker-compose build
+    docker-compose up // verbose
+    docker-compose up -d // detached
 
 # Para testes utilizar o client.py:
 	python client.py
