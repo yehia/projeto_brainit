@@ -26,7 +26,7 @@ a cada 20 segundos ele faz um select, busca os dados pendentes, trata a String e
 Cada serviço possui uma classe de wait_for_db, ou seja, enquanto o banco não fica disponível os outros
 containers não sobem.
 
-# Caso obtenham um erro de binding de uso da porta 5050
+# Caso obtenham o erro de binding de uso da porta 5050
 	sudo netstat -tulpn | grep 5050
 	kill -9 num_processo
 
