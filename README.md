@@ -39,5 +39,5 @@ Caso não queira ver a exception basta remover o comando de migration do docker-
       python server.py
 
 # Overview do psycopg2
-O driver do banco é compilado em tempo real, gerando assim mais desempenho, pois o binário
+O driver do banco é compilado em tempo real, resultando assim em mais desempenho, pois o binário
 é gerado especificamente para a distro em execução.
