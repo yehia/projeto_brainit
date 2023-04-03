@@ -1,7 +1,7 @@
-# Build GW_ENTRADA:
+# Build GW_ENTRADA
 	docker build .
 
-# Build GW_TRATAMENTO:
+# Build GW_TRATAMENTO
 	docker build .
 
 # Compose
@@ -9,7 +9,7 @@
     docker-compose up // verbose
     docker-compose up -d // detached
 
-# Para testes utilizar o client.py:
+# Para testes utilizar o client.py
 	python client.py
 
 # Descrição
@@ -26,7 +26,7 @@ a cada 20 segundos ele faz um select, busca os dados pendentes, trata a String e
 Cada serviço possui uma classe de wait_for_db, ou seja, enquanto o banco não fica disponível os outros
 containers não sobem.
 
-# Caso obtenham um erro de binding de uso da porta 5050 basta executar o seguinte comando:
+# Caso obtenham um erro de binding de uso da porta 5050
 	sudo netstat -tulpn | grep 5050
 	kill -9 num_processo
 
